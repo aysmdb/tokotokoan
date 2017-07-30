@@ -1,0 +1,34 @@
+﻿@model Toko_Tokoan.Models.ViewModels.ProductListViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@foreach (var product in Model.Products)
+{
+    <div class="well">
+        <h3>
+            <strong>@product.Name</strong>
+            <span class="pull-right label label-primary">
+            @product.Price.ToString("c")
+            </span>
+        </h3>
+
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+        <input type="hidden" name="productId"
+               id="productId" value="@product.Id" />
+        <input type="hidden" name="returnUrl"
+               id="returnUrl" 
+               value="@Request.Url.PathAndQuery" />
+
+        <button type="submit" 
+                class="btn btn-success pull-right">
+            Add To Cart
+        </button>
+        }
+
+        <span class="lead">@product.Description</span>
+    </div>
+}

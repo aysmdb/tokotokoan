@@ -1,0 +1,54 @@
+﻿@model Toko_Tokoan.Models.ViewModels.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h2>Your Cart</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Cart.Lines)
+        {
+            <tr>
+                <td>@c.Products.Name</td>
+                <td>@c.Quantity</td>
+                <td class="text-right">
+                    @c.Products.Price.ToString("c")
+                </td>
+                <td class="text-right">
+                    @((c.Quantity * c.Products.Price).ToString("c"))
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Total</td>
+            <td class="text-right">
+                <strong>
+                    @(Model.Cart.ComputeTotal().ToString("c"))
+                </strong>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a href="@Model.ReturnUrl" class="btn btn-primary">
+        Continue Shopping
+    </a>
+    <a href="@Url.Action("Checkout")" 
+       class="btn btn-success">
+        Checkout!
+    </a>
+</div>

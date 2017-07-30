@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a href="#" class="navbar-brand">Toko Tokoan</a>
+    </div>
+    <div class="row panel">
+        @Html.Partial("_Navigation")
+
+        <div class="col-xs-8">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

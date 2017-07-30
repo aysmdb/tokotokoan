@@ -1,0 +1,11 @@
+﻿@model IEnumerable<string>
+
+@Html.ActionLink("Home", "Index", "Home", null, 
+    new { @class = "btn btn-default btn-block"})
+
+@foreach (var c in Model)
+{
+    @Html.ActionLink(c, "Index", "Home", new { category = c},
+    new { @class = "btn btn-default btn-block" + 
+    (ViewBag.SelectedCategory == c ? " btn-warning" : "")})
+}

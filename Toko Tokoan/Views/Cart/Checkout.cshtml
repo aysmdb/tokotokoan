@@ -1,0 +1,51 @@
+﻿@model Toko_Tokoan.Models.ShippingDetails
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h2>Shipping Details</h2>
+<p>Please enter your shipping details,
+    and we will send your goods right away!</p>
+
+@using (Html.BeginForm()) {
+    
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.Name, 
+            new { @class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        @Html.TextBoxFor(m => m.Address,
+            new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Province</label>
+        @Html.TextBoxFor(m => m.Province,
+            new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        @Html.TextBoxFor(m => m.City,
+            new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>ZIP Code</label>
+        <input type="number" name="ZIP" id="ZIP" 
+               class="form-control"/>
+    </div>
+
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">
+            Send!
+        </button>
+    </div>
+}
